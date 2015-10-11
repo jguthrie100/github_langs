@@ -43,7 +43,7 @@ h2 {
 <%= yield %>
 
 <p>
-  <h2>Search for another GitHub username:</h2>
+  <h2>Search for a GitHub username:</h2>
   <%= form_tag("/profiles/search") do %>
     <%= text_field_tag(:id) %>
     <%= submit_tag("Submit") %>
