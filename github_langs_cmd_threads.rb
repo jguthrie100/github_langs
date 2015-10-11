@@ -44,14 +44,14 @@ loop do
   lang_hash = Hash.new(0)
 
   # vars for Thread handling
-#  mutex1 = Mutex.new
-#  threads = Hash.new
+  mutex1 = Mutex.new
+  threads = Hash.new
 
   # Loop through each repo/project and request the languages used in each repo
   projects.each do |p|
     
     # Use Threads for API calls
-#    threads[p] = Thread.new do
+    threads[p] = Thread.new do
 
       # URL to grab Json data containing languages used in a project
       lang_url = "#{api_url}/repos/#{user}/#{p}/languages"
@@ -62,19 +62,19 @@ loop do
 
       # Loop through the response and add the amount of bytes written in each language
       #  to the 'master languages hash'
-#      mutex1.synchronize do # Lock access to the main lang_hash hash
+      mutex1.synchronize do # Lock access to the main lang_hash hash
         resp.each do |lang, bytes|
           lang_hash[lang] += bytes.to_i
         end
-#      end
-#    end
+      end
+    end
 
   end
 
   # Pause main thread until all threads have finished
-#  threads.each do |project, thread|
-#    thread.join
-#  end
+  threads.each do |project, thread|
+    thread.join
+  end
 
   puts
   puts "Showing results... first result is the most used language for #{user}"

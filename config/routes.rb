@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   post 'profiles/search' => 'profiles#search'
 
   get 'profile/:id' => 'profiles#show'
+  get 'profiles/:id' => 'profiles#show'
+
+  get 'profile/threads/:id' => 'profiles#show_threads'
+  get 'profiles/threads/:id' => 'profiles#show_threads'
 
   #get 'profile' => 'profiles'
 
