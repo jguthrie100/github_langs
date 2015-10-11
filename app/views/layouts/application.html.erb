@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+  <title>GithubLangs</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<style>
+
+h2 {
+  font: 18px sans-serif;
+  font-weight: bold;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+</style>
+<body>
+
+<%= yield %>
+
+<p>
+  <h2>Search for another GitHub username:</h2>
+  <%= form_tag("/profiles/search") do %>
+    <%= text_field_tag(:id) %>
+    <%= submit_tag("Submit") %>
+  <% end %>
+</p>
+
+</body>
+</html>
